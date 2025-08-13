@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "task-tracker-cli-temp"
+version = "0.1.0"
+description = "A command-line task tracker"
+authors = [
+    { name = "Zvezdomir Dalev", email = "zvezdomir.dalev@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+
+# Add any external dependencies here
+dependencies = [
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+task-tracker = "task_tracker.run:main"

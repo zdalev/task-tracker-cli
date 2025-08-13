@@ -1,6 +1,6 @@
 import dataclasses
 
-from src.tasks import StatusEnum
+from task_tracker.tasks import StatusEnum
 
 
 @dataclasses.dataclass
