@@ -1,7 +1,7 @@
 import pytest
 
-from models import TaskDTOJson
-from tasks import TasksRepo, StatusEnum
+from task_tracker.models import TaskDTOJson
+from task_tracker.tasks import TasksRepo, StatusEnum
 
 
 @pytest.fixture
