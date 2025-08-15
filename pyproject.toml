@@ -24,4 +24,4 @@ package-dir = { "" = "src" }
 where = ["src"]
 
 [project.scripts]
-task-tracker = "task_tracker.run:main"
+task-cli = "task_tracker.run:main"
