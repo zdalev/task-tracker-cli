@@ -28,8 +28,6 @@ def transform_enum_to_str(member: enum.Enum) -> str:
 
 
 def write_to_file(repo: TasksRepo) -> None:
-
-    print(repo.tasks)
     tasks = json.dumps({_id: task.to_json_dict() for _id,task in repo.tasks.items()},indent=4)
 
     config = configparser.ConfigParser()
