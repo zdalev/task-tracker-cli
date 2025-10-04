@@ -11,6 +11,7 @@ class StatusEnum(enum.Enum):
     INPROGRESS = "in-progress"
     DONE = "done"
     TODO = "todo"
+    NONE = "none"
 
 
 class TaskInterface(typing.Protocol):
@@ -33,7 +34,7 @@ class TasksRepo:
             logger.debug(f"Exception: {e}; Setting ID to 1.")
             task_id = 1
         task.identifier = task_id
-        self.tasks.update({task_id:task})
+        self.tasks.update({task_id: task})
         current_date = get_current_date()
         task.createdAt = current_date
         task.updatedAt = current_date
@@ -52,9 +53,18 @@ class TasksRepo:
 
         return result
 
-    def mark(self, status, task_id):
+    def mark(self, status: StatusEnum, task_id: id):
         task = self.tasks.get(task_id)
         task.status = status
         task.updatedAt = get_current_date()
 
         return task
+
+    def get_by(self, value: typing.Any = None, attribute: typing.Any = None) -> list[TaskInterface]:
+        logger.debug(f"Attribute: {attribute}; Value: {value}")
+        if value == StatusEnum.NONE:
+            return list(self.tasks.values())
+        tasks = filter(lambda task: getattr(task, attribute) == value,
+                       self.tasks.values())
+
+        return list(tasks)

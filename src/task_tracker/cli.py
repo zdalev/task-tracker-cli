@@ -41,7 +41,8 @@ def make_cli() -> argparse.Namespace:
     parser.add_argument("-l",
                         "--list",
                         type=str,
-                        default=None,
+                        nargs='?',
+                        const="none",
                         help="List all or specified tasks based on status from the tracker.")
     parser.add_argument("-log",
                         "--log-level",
